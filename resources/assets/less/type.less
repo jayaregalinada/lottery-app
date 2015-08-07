@@ -1,0 +1,53 @@
+.font-light {
+    font-weight: 300;
+    &.important {
+        font-weight: 300!important;
+    }
+}
+.font-bold {
+    font-weight: 700;
+    &.important {
+        font-weight: 700!important;
+    }
+}
+.font-normal {
+    font-weight: normal;
+    &.important {
+        font-weight: normal!important;
+    }
+}
+.no-underline {
+    text-decoration: none;
+    &.important {
+        text-decoration: none!important;
+    }
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.cursor-pointer-when-hover {
+    &:hover {
+        cursor: pointer;
+    }
+}
+.color-white {
+    color: #FFF;
+    &.important {
+        color: #FFF!important;
+    }
+}
+.color-gray {
+    color: @gray;
+}
+.color-gray-light {
+    color: @gray-light;
+}
+.color-gray-lighter {
+    color: @gray-lighter;
+}
+.color-gray-dark {
+    color: @gray-dark;
+}
+.color-gray-darker {
+    color: @gray-darker;
+}
