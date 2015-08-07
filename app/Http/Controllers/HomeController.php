@@ -3,28 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Lucky;
-use Illuminate\Http\Request;
-use Illuminate\Database\QueryException;
 use Carbon\Carbon;
+use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
 
-class HomeController extends Controller {
+class HomeController extends Controller
+{
 
-    /*
-    |--------------------------------------------------------------------------
-    | Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller renders your application's "dashboard" for users that
-    | are authenticated. Of course, you are free to change or remove the
-    | controller as you wish. It is just here to get your app started!
-    |
-    */
-
-    /**
-     * Show the application dashboard to the user.
-     *
-     * @return Response
-     */
     public function index()
     {
         return view('index');
@@ -33,12 +18,13 @@ class HomeController extends Controller {
     public function submit(Request $request)
     {
         try {
+            $this->checkingUniqueness($request);
+            $this->checkingRange($request);
             if( $request->get('lottery') === 'false' ) {
                 $value = $this->generateNew();
             } else {
                 $value = $this->generateByUser($request);
             }
-
             Lucky::create([
                 'number' => implode(",", array_values( $value ))
             ]);
@@ -54,6 +40,26 @@ class HomeController extends Controller {
                 'b' => $request->get('b'),
                 'c' => $request->get('c'),
             ], 500);
+        } catch (\Exception $e) {
+            return response([
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    protected function checkingUniqueness(Request $request)
+    {
+        if( count(array_unique($request->only(['a', 'b', 'c']))) < 3) {
+            throw new \Exception('Every box must be unique. Try again?');
+        }
+    }
+
+    protected function checkingRange(Request $request)
+    {
+        foreach ($request->only(['a', 'b', 'c']) as $key => $value) {
+            if(!in_array($value, range(1, 49))) {
+                throw new \Exception('Every box must be range from 1 to 49. Try again?');
+            }
         }
     }
 

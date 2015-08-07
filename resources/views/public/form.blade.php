@@ -7,15 +7,15 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
         <div class="col-xs-4">
-            <input type="number" value="0" class="form-control" name="a" ng-model="lucky.a" />
+            <input type="number" value="0" class="form-control" name="a" min="1" max="49" ng-model="lucky.a" ng-minlength="1" ng-maxlength="49" />
         </div>
 
         <div class="col-xs-4">
-            <input type="number" value="0" class="form-control" name="b" ng-model="lucky.b" />
+            <input type="number" value="0" class="form-control" name="b" min="1" max="49" ng-model="lucky.b" ng-minlength="1" ng-maxlength="49" />
         </div>
 
         <div class="col-xs-4">
-            <input type="number" value="0" class="form-control" name="c" ng-model="lucky.c" />
+            <input type="number" value="0" class="form-control" name="c" min="1" max="49" ng-model="lucky.c" ng-minlength="1" ng-maxlength="49" />
         </div>
 
         <div class="clear"></div>

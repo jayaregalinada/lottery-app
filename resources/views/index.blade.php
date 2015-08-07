@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="jumbotron">
-        <div class="container-fluid">
+        <div class="container text-center">
             <h1>Your Lucky Day</h1>
         </div>
     </div>

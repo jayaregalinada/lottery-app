@@ -95,7 +95,7 @@ var bowerVendors = {
         // 'angular-ui-select/dist/select.js',
         // 'ng-tags-input/ng-tags-input.js',
         // 'angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js',
-        // 'lodash/lodash.min.js',
+        'lodash/lodash.min.js',
         // 'angular-google-maps/dist/angular-google-maps.min.js',
         // 'jquery.transit/jquery.transit.js',
         // 'angular-aria/angular-aria.js',
